@@ -1,6 +1,7 @@
 # highD_research
-very slow!
-
-![image](https://github.com/pprivulet/highD_research/blob/master/Figure_1.png)
 
 
+![image](Figure_1.png?raw=true)
+
+
+![image](11_highway.png?raw=true)
