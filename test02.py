@@ -63,15 +63,19 @@ class ScenarioData():
         while self.running:
             display_surface.fill(self.white)
             display_surface.blit(self.image, (0, 0))
-            for row in self.frame_list[self.t_count]:
-                #print(row['id'],row['x'],row['y'],row['width'],row['height'])
-                vehicle_color = self.vehicle_list[int(row['id'])-1]
-                a = float(row['x']) * self.X / self.road_lenth
-                b = (float(row['y'])+0.2) * self.Y / self.road_width
-                w = float(row['width']) * self.X / self.road_lenth
-                h = float(row['height']) * self.Y / self.road_width
-                points = [(a, b), (a+w, b), (a+w, b+h), (a, b+h)]
-                pygame.draw.polygon(display_surface, vehicle_color, points)
+            try:
+                for row in self.frame_list[self.t_count - 1]:
+                    #print(row['id'],row['x'],row['y'],row['width'],row['height'])
+                    vehicle_color = self.vehicle_list[int(row['id'])-1]
+                    a = float(row['x']) * self.X / self.road_lenth
+                    b = (float(row['y'])+0.2) * self.Y / self.road_width
+                    w = float(row['width']) * self.X / self.road_lenth
+                    h = float(row['height']) * self.Y / self.road_width
+                    points = [(a, b), (a+w, b), (a+w, b+h), (a, b+h)]
+                    pygame.draw.polygon(display_surface, vehicle_color, points)
+            except IndexError:
+                print('scenario end')
+                break 
             for event in pygame.event.get() : 
                 if event.type == pygame.QUIT :
                     pygame.quit()
