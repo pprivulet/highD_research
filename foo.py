@@ -12,7 +12,7 @@ plt.hlines([0, -3.65,-15.22,-20.88,-32.54, -32.54-3.65],-50,450,colors='k', line
 plt.hlines([-7.62,-11.42,-24.86,-28.48],-50,450,colors='k', linestyles=(0,(3,15)), linewidth=0.5)  
 plt.axis('equal')
 plt.text(-40, -50, "Frame num:")
-plt.text(-40, -60, "Frame rate:")
+plt.text(-40, -60, "Frame delay:")
 
 
 df11_tracks = pd.read_csv('11_tracks.csv')
@@ -41,7 +41,7 @@ for frame in range(1, global_frame_num + 1):
     txt = plt.text(0,-50, str(frame))
     end_time = time.time()
     duration = end_time - start_time
-    txt_d = plt.text(0,-60, str(int(duration)))  
+    txt_d = plt.text(0,-60, str(duration))  
     plt.pause(1/25)   
        
     for car in car_recs: car.remove()
